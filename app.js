@@ -1,7 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const authRoute = require('./routes/authRoutes');
-const calRoute = require('./routes/calRoutes')
+const expenseRoute = require('./routes/expenseRoutes')
 
 const app = express();
 
@@ -12,6 +12,6 @@ app.use(cookieParser())
 
 //routes
 app.use("/api/v1", authRoute);
-app.use("/api/v1", calRoute);
+app.use("/api/v1", expenseRoute);
 
 module.exports = app
