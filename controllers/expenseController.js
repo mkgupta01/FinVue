@@ -13,6 +13,7 @@ exports.addExpense = async (req, res) => {
 
         res.status(201).json({
             success: true,
+            "message": "Data added",
             user
         })
     } catch (error) {
@@ -27,14 +28,22 @@ exports.getMonth = async (req, res) => {
     try {
         const user = await userModel.findById(req.params.id);
 
-        const { month } = req.body;
+        if(!user){
+            res.status(402).json({
+                success:false,
+                "message":"user not found"
+            })
+            return
+        }
 
-        const expensesForMonth = user.expenses.filter(expense => expense.startsWith(month));
+        const  month  = req.params.month;
+
+        const expensesForMonth = await user.expenses.filter(expense => expense.startsWith(month));
         expensesForMonth.sort();
 
         res.status(200).json({
             success: true,
-            expensesForMonth: expensesForMonth
+            expensesForMonth: expensesForMonth.sort()
         });
     } catch (error) {
         res.status(500).json({
