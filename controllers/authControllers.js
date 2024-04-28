@@ -2,7 +2,7 @@ const userModel = require('../models/userModel');
 
 exports.registerController = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { FirstName, LastName, email, password, phone, company } = req.body;
 
         let existinguser = await userModel.findOne({ email });
         if (existinguser) {
@@ -10,16 +10,17 @@ exports.registerController = async (req, res) => {
                 success: false,
                 message: "User already registered"
             })
+            return;
         }
 
-        let newUser = await userModel.create({ name, email, password });
+        let newUser = await userModel.create({ FirstName, LastName, email, password, company, phone });
         res.status(201).json({
             success: true,
             newUser
         })
 
     } catch (error) {
-        res.status(500).json({
+        res.status(500).json({  
             success: false,
             message: "Error in register controller",
             error: error
@@ -34,24 +35,26 @@ exports.loginController = async (req, res) => {
         const userEntered = await userModel.findOne({ email });
 
         if (!userEntered) {
-            res.status(501).json({
+            res.status(201).json({
                 success: false,
                 message: "User not registered"
             })
+            return
         }
 
-        const isMatched = userEntered.matchPassword(password);
+        const isMatched = await userEntered.matchPassword(password);
 
         if (!isMatched) {
-            res.status(500).json({
+            res.status(200).json({
                 success: false,
                 message: "Password mismatch"
             })
+            return
         }
 
         res.status(200).json({
             success: true,
-            userEntered
+            userEntered     
         })
     } catch (error) {
         res.status(500).json({
