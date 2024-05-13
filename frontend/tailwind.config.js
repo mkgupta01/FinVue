@@ -11,6 +11,9 @@ module.exports = {
 
     // },
     extend: {
+      fontFamily: {
+        russo: ['"Russo One"']
+      },
       height: {
         18: "4.5rem",
         50: "14rem",

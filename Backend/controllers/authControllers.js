@@ -42,8 +42,10 @@ exports.loginController = async (req, res) => {
             return
         }
 
-        const isMatched = await userEntered.matchPassword(password);
+        console.log(password);
 
+        const isMatched = await userEntered.matchPassword(password);
+        console.log(isMatched)
         if (!isMatched) {
             res.status(200).json({
                 success: false,

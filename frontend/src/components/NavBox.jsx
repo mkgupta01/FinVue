@@ -1,19 +1,20 @@
 const NavContainer = () => {
+  const but_style = "rounded bg-blue-500 px-4 py-2 text-center text-lg text-black hover:bg-blue-700"
   return (
-    <div class="mt-6 h-[12rem] w-[28rem] px-8 py-8 opacity-65 bg-white rounded-lg flex flex-col justify-between">
-      <div class="grid grid-cols-2 gap-4">
-        <a href='/month' class="rounded-md bg-red-500 px-5 py-2 text-2xl font-large text-black shadow-md transition duration-150 ease-in-out hover:bg-rose-500 hover:shadow-lg focus:outline-none focus:ring-0 active:bg-rose-600">
+    <div className="mt-6 h-[11rem] w-[28rem] px-8 py-8 opacity-65 bg-white rounded-lg flex flex-col justify-between">
+      <div className="grid grid-cols-2 gap-4">
+        <a href='/profile' className={but_style}>
           Profile
         </a>
-        <a class="rounded-md bg-red-500 px-5 py-2 text-2xl font-large text-black shadow-md transition duration-150 ease-in-out hover:bg-rose-500 hover:shadow-lg focus:outline-none focus:ring-0 active:bg-rose-600">
+        <a href="/about" className={but_style}>
           About Us
         </a>
       </div>
-      <div class="grid grid-cols-2 gap-4">
-        <a class="rounded-md bg-red-500 px-5 py-2 text-2xl font-large text-black shadow-md transition duration-150 ease-in-out hover:bg-rose-500 hover:shadow-lg focus:outline-none focus:ring-0 active:bg-rose-600">
-          Insurance
+      <div className="grid grid-cols-2 gap-4">
+        <a href="/year" className={but_style}>
+          Year
         </a>
-        <a class="rounded-md bg-red-500 px-5 py-2 text-2xl font-large text-black shadow-md transition duration-150 ease-in-out hover:bg-rose-500 hover:shadow-lg focus:outline-none focus:ring-0 active:bg-rose-600">
+        <a className={but_style}>
           Log Out
         </a>
       </div>

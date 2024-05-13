@@ -16,7 +16,6 @@ const Login = () => {
       });
 
       if (res.data.success) {
-        alert("User login successfull");
         localStorage.setItem("user", JSON.stringify(res.data.userEntered));
         localStorage.setItem("id", res.data.userEntered._id)
         navigate('/month')

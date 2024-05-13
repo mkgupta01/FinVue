@@ -1,6 +1,6 @@
 const StocksContainer = () => {
   return (
-    <div class="mt-6 h-[12rem] w-108 px-8 py-4 opacity-65 bg-white rounded-lg">
+    <div class="mt-6 h-[12rem] w-108 mx-4 px-8 py-4 opacity-65 bg-white rounded-lg">
       <div class="flex justify-between items-center">
         <h2 class="text-black font-extrabold text-3xl">Stocks</h2>
         <button class="relative bg-blue-700 text-white px-5 py-2 rounded">

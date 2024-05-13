@@ -25,7 +25,6 @@ const MonthContainer = () => {
     const fetchData = async () => {
       try {
         const id = localStorage.getItem("id");
-        console.log(id);
         const res = await axios.get(`/api/v1/get-data/${id}/${month}`);
         await setData(res.data.expensesForMonth);
       } catch (error) {

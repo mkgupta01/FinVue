@@ -28,6 +28,7 @@ const AddExpense = () => {
       if (res.status) {
         alert(res.data.message);
       }
+      window.location.reload();
     } catch (error) {
       alert("Error in enetering data");
     }
@@ -88,7 +89,7 @@ const AddExpense = () => {
                   className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   required
                 >
-                  <option value="" disabled>
+                  <option value="" disabled className="px-1">
                     Select Month
                   </option>
                   <option value="Jan">January</option>
