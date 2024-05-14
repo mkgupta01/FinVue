@@ -1,6 +1,5 @@
 const express = require('express'); 
 const { addExpense, getMonth, getTotal, getYear } = require('../controllers/expenseController');
-const { isLoggedIn } = require('../middleware/authMiddleWare');
 
 const router = express.Router();
 

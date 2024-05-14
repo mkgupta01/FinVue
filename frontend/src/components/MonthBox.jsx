@@ -5,7 +5,7 @@ import AddExpense from "./AddExpense";
 const MonthContainer = () => {
   const [data, setData] = useState([]);
   const [showAddExpense, setShowAddExpense] = useState(false);
-  const [month, setMonth] = useState("Mar");
+  const [month, setMonth] = useState(localStorage.getItem('month'));
 
   const toggleAddExpense = () => {
     setShowAddExpense(!showAddExpense);
@@ -21,24 +21,48 @@ const MonthContainer = () => {
     return total;
   }
 
+  const handleMonthChange = async (e) => {
+    const newMonth = e.target.value;
+    localStorage.setItem('month', newMonth);
+    setMonth(newMonth); 
+    window.location.reload();
+  }
+  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const id = localStorage.getItem("id");
         const res = await axios.get(`/api/v1/get-data/${id}/${month}`);
-        await setData(res.data.expensesForMonth);
+        setData(res.data.expensesForMonth);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [month]);
 
   return (
     <div className="h-[31rem] w-108 px-8 py-4 opacity-65 bg-white rounded-lg">
       <div className="flex justify-between items-center">
-        <h2 className="text-black font-extrabold text-3xl">March</h2>
+        
+        <select className="text-black font-extrabold text-3xl" onChange={ handleMonthChange } value={month}>
+          <option value="Jan">January</option>
+          <option value="Feb">February</option>
+          <option value="Mar">March</option>
+          <option value="Apr">April</option>
+          <option value="May">May</option>
+          <option value="Jun">June</option>
+          <option value="Jul">July</option>
+          <option value="Aug">August</option>
+          <option value="Sep">September</option>
+          <option value="Oct">October</option>
+          <option value="Nov">November</option>
+          <option value="Dec">December</option>
+        </select>
+
+
         <button
           className="relative bg-blue-700 text-white px-5 py-2 rounded"
           onClick={toggleAddExpense}

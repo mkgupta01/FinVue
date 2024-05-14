@@ -3,7 +3,7 @@ import axios from "axios";
 import { PieChart } from '@mui/x-charts/PieChart';
 
 const MonthGraphContainer = () => {
-  const month = "Mar"
+  const month = localStorage.getItem('month');
   const [TotalIn, setTotalIn] = useState(0);
   const [TotalOut, setTotalOut] = useState(0);
 
@@ -14,8 +14,9 @@ const MonthGraphContainer = () => {
       setTotalIn(res.data.totalIn);
       setTotalOut(res.data.totalOut)
     }
+
     fetchData();
-  }, [])
+  }, [localStorage.getItem('month')])
 
   return (
 
@@ -24,7 +25,7 @@ const MonthGraphContainer = () => {
       <div className="h-8">
 
         <PieChart
-        colors={['green', 'brown']}
+          colors={['green', 'brown']}
           series={[
             {
               data: [

@@ -52,7 +52,13 @@ exports.loginController = async (req, res) => {
             return
         }
 
-        res.status(200).json({
+        const token = userEntered.generateToken();
+        res.status(200)
+        .cookie("token", token, {
+            expires: new Date(Date.now() + 30 * 24 * 60 * 1000), //30 din ko milisec m likha hai
+            httpOnly: true
+        })
+        .json({
             success: true,
             userEntered     
         })

@@ -6,6 +6,7 @@ import Login from "./Pages/Login";
 import YearPage from "./Pages/YearPage";
 import HomePage from "./Pages/HomePage"
 import AboutPage from "./Pages/AboutPage";
+import DeveloperMark from "./components/DeveloperMark";
 
 function App() {
   return (
@@ -17,7 +18,6 @@ function App() {
 
 
       <Router>
-        <div className="relative z-10">
           <Routes>
           {/* <----------------- AUTH PAGES ------------> */}
             <Route path="/register" element={<Register />} />
@@ -28,7 +28,7 @@ function App() {
             <Route path="/month" element={<MonthPage />} />
             <Route path="/about" element={<AboutPage />} />
           </Routes>
-        </div>
+          <DeveloperMark />
       </Router>
     </div>
   );

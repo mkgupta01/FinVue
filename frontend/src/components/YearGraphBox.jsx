@@ -12,6 +12,7 @@ const YearGraphContainer = () => {
 
   useEffect(() => {
     const fetchedData = async () => {
+
       try {
         const id = localStorage.getItem("id");
         const res = await axios.get(`/api/v1/get-year/${id}`);
@@ -27,7 +28,7 @@ const YearGraphContainer = () => {
 
         for (const month in sortedData) {
             if (sortedData.hasOwnProperty(month)) {
-                const [inValue, outValue] = data[month].split('_'); // Split the value by underscore
+                const [inValue, outValue] = sortedData[month].split('_'); // Split the value by underscore
                 tempLabels.push(month);
                 tempInVal.push(parseInt(inValue));
                 tempOutVal.push(parseInt(outValue));
@@ -52,8 +53,8 @@ const YearGraphContainer = () => {
       <div className="h-8">
 
         <BarChart
-          xAxis={[{ scaleType: 'band', data: labels}]}
-          series={[{ data: inVal, label: "In" }, { data: outVal, label: "Out"}]}
+          xAxis={[{ scaleType: 'band', data: labels }]}
+          series={[{ data: inVal, label: "In" }, { data: outVal, label: "Out" }]}
           width={400}
           height={250}
         />
