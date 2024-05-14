@@ -2,7 +2,7 @@ const userModel = require('../models/userModel');
 
 exports.registerController = async (req, res) => {
     try {
-        const { FirstName, LastName, email, password, phone, company } = req.body;
+        const { FirstName, LastName, email, password, } = req.body;
 
         let existinguser = await userModel.findOne({ email });
         if (existinguser) {
@@ -13,7 +13,7 @@ exports.registerController = async (req, res) => {
             return;
         }
 
-        let newUser = await userModel.create({ FirstName, LastName, email, password, company, phone });
+        let newUser = await userModel.create({ FirstName, LastName, email, password });
         res.status(201).json({
             success: true,
             newUser
@@ -42,10 +42,8 @@ exports.loginController = async (req, res) => {
             return
         }
 
-        console.log(password);
-
         const isMatched = await userEntered.matchPassword(password);
-        console.log(isMatched)
+
         if (!isMatched) {
             res.status(200).json({
                 success: false,

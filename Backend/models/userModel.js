@@ -18,16 +18,7 @@ const userSchema = mongoose.Schema({
     },
     password:{
         type: String,
-        require: [true, "Please enter password"],
-        minlength: [6, "Password must be of 6 chahracters"]
-    },
-    company:{
-        type: String,
-        require: [true, "Please enter a company"]
-    },
-    phone:{
-        type: Number,
-        require: [true, "Please enter your number"]
+        minlength: [6, "Password must be of 6 characters"]
     },
     expenses:[
         {
@@ -37,14 +28,14 @@ const userSchema = mongoose.Schema({
 })
 
 userSchema.pre("save", async function(next){
-    if(!this.isModified(this.password)){
-        this.password = bcrypt.hash(this.password, 10);
+    if(this.isModified("password")){
+        this.password = await bcrypt.hash(this.password, 10);
     }
     next()
 })
 
 userSchema.methods.matchPassword = async function(password){
-    console.log(this.password+"   "+ password)
+    // console.log(this.password+"   "+ password)
     return await bcrypt.compare(password, this.password);
 }
 

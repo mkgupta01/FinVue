@@ -25,9 +25,9 @@ const AddExpense = () => {
         outVal,
         msg,
       });
-      if (res.status) {
-        alert(res.data.message);
-      }
+      // if (res.status) {
+      //   alert(res.data.message);
+      // }
       window.location.reload();
     } catch (error) {
       alert("Error in enetering data");

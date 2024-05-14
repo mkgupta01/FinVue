@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import sortDataByMonth from "../utilities/sortByMonth";
+
 const YearContainer = () => {
 
   const [data, setData] = useState([]);
@@ -9,8 +11,8 @@ const YearContainer = () => {
       try {
         const id = localStorage.getItem("id");
         const res = await axios.get(`/api/v1/get-year/${id}`);
-        await setData(res.data.data);
-        console.log(data);
+        const sortedData = sortDataByMonth(res.data.data)
+        setData(sortedData);
       } catch (error) {
         console.log("Error in fetching data");
       }
@@ -19,6 +21,7 @@ const YearContainer = () => {
     fetchedData();
   }, [])
 
+  
   return (
     <div class="h-72 w-108 px-8 py-4 opacity-65 bg-white rounded-lg">
       <h2 class="text-black font-extrabold text-4xl">2024</h2>
@@ -48,8 +51,6 @@ const YearContainer = () => {
             );
           })
         }
-
-
       </ul>
 
     </div>
