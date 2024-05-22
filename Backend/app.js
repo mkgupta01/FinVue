@@ -8,7 +8,8 @@ const app = express();
 
 //middleware
 app.use(cors({
-    origin: "https://fin-vue.vercel.app"
+    origin: "https://fin-vue.vercel.app",
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
 }))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
