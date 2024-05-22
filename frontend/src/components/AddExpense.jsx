@@ -18,7 +18,7 @@ const AddExpense = () => {
     try {
       e.preventDefault();
       const id = localStorage.getItem("id");
-      const res = await axios.post(`/api/v1/add-data/${id}`, {
+      await axios.post(`/api/v1/add-data/${id}`, {
         month,
         date,
         inVal,

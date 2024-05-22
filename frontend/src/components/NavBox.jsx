@@ -1,4 +1,3 @@
-import Cookies from 'js-cookies'
 import { useNavigate } from 'react-router-dom';
 
 const NavContainer = () => {
@@ -26,9 +25,9 @@ const NavContainer = () => {
         <a href="/year" className={but_style}>
           Year
         </a>
-        <a className={but_style} onClick={handle_logOut}>
+        <button className={but_style} onClick={handle_logOut}>
           Log Out
-        </a>
+        </button>
       </div>
     </div>
   );

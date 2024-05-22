@@ -8,8 +8,7 @@ const Register = () => {
   const [LastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState(0);
-  const [company, setCompany] = useState("");
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,8 +18,6 @@ const Register = () => {
         LastName,
         email,
         password,
-        phone,
-        company,
       });
       if (res.status) {
         alert("Registration Successfull");
