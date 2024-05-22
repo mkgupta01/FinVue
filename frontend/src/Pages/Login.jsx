@@ -10,7 +10,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post("/api/v1/login", {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/login`, {
         email,
         password,
       });

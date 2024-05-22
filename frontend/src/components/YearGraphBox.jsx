@@ -15,7 +15,7 @@ const YearGraphContainer = () => {
 
       try {
         const id = localStorage.getItem("id");
-        const res = await axios.get(`/api/v1/get-year/${id}`);
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/get-year/${id}`);
         const fetchedData = res.data.data;
         const sortedData = await sortDataByMonth(fetchedData);
         setData(sortedData);

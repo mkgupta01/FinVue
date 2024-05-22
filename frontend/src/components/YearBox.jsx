@@ -10,7 +10,7 @@ const YearContainer = () => {
     const fetchedData = async () => {
       try {
         const id = localStorage.getItem("id");
-        const res = await axios.get(`/api/v1/get-year/${id}`);
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/get-year/${id}`);
         const sortedData = sortDataByMonth(res.data.data)
         setData(sortedData);
       } catch (error) {

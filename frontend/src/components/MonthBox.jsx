@@ -33,7 +33,7 @@ const MonthContainer = () => {
     const fetchData = async () => {
       try {
         const id = localStorage.getItem("id");
-        const res = await axios.get(`/api/v1/get-data/${id}/${month}`);
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/get-data/${id}/${month}`);
         setData(res.data.expensesForMonth);
       } catch (error) {
         console.error("Error fetching data:", error);

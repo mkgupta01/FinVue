@@ -10,7 +10,7 @@ const MonthGraphContainer = () => {
   useEffect(() => {
     const fetchData = async () => {
       const id = localStorage.getItem('id')
-      const res = await axios.get(`/api/v1/get-total/${id}/${month}`);
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/get-total/${id}/${month}`);
       setTotalIn(res.data.totalIn);
       setTotalOut(res.data.totalOut)
     }

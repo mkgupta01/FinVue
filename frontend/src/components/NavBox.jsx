@@ -6,7 +6,7 @@ const NavContainer = () => {
 
   const handle_logOut = () => {
     localStorage.clear();
-    alert("Logged Out : Redirecting to homepage")
+    alert("Logged Out")
     navigate('/');
   }
 
