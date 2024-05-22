@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:8080/",
+  "proxy": "https://finvue.onrender.com",
   "dependencies": {
     "@canvasjs/react-charts": "^1.0.2",
     "@coreui/react-chartjs": "^3.0.0",
